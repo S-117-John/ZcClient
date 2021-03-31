@@ -22,8 +22,10 @@ namespace ZcClient
             //CefSharpSettings.WcfEnabled = true;
             //var obj = new CSObj(System.Threading.SynchronizationContext.Current);
 
-            string url = "http://localhost:8000";
-            ChromiumWebBrowser webview = new ChromiumWebBrowser("http://127.0.0.1:9090/page/index.html")
+            string url = "http://127.0.0.1:9090/page/index.html";
+            string rootPath = Application.StartupPath.ToString();
+            string filePath = rootPath+"\\web\\index.html";
+            ChromiumWebBrowser webview = new ChromiumWebBrowser(url)
             {
                 Dock = DockStyle.Fill,
             };
@@ -31,10 +33,13 @@ namespace ZcClient
 
             JavascriptObjectTest test = new JavascriptObjectTest();
 
+            JavascriptObject javascriptObject = new JavascriptObject();
+
             webview.JavascriptObjectRepository.Register("googleBrower", test, isAsync: true, options: BindingOptions.DefaultBinder);
 
             //webview.JavascriptObjectRepository.Register("googleBrower", new CSObj(), false, CefSharp.BindingOptions.DefaultBinder);
             this.Controls.Add(webview);
         }
+
     }
 }

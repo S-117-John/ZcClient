@@ -24,21 +24,22 @@ namespace ZcClient
 
             string url = "http://127.0.0.1:9090/page/index.html";
             string rootPath = Application.StartupPath.ToString();
-            string filePath = rootPath+"\\web\\index.html";
-            ChromiumWebBrowser webview = new ChromiumWebBrowser(url)
-            {
-                Dock = DockStyle.Fill,
-            };
+            string filePath = rootPath+"\\web\\page\\index.html";
+            this.chromiumWebBrowser1.Load(url);
+            //ChromiumWebBrowser webview = new ChromiumWebBrowser(url)
+            //{
+            //    Dock = DockStyle.Fill,
+            //};
             //webview.JavascriptObjectRepository.Settings.LegacyBindingEnabled = true;
 
             JavascriptObjectTest test = new JavascriptObjectTest();
 
             JavascriptObject javascriptObject = new JavascriptObject();
 
-            webview.JavascriptObjectRepository.Register("googleBrower", test, isAsync: true, options: BindingOptions.DefaultBinder);
+            chromiumWebBrowser1.JavascriptObjectRepository.Register("googleBrower", test, isAsync: true, options: BindingOptions.DefaultBinder);
 
             //webview.JavascriptObjectRepository.Register("googleBrower", new CSObj(), false, CefSharp.BindingOptions.DefaultBinder);
-            this.Controls.Add(webview);
+            this.Controls.Add(chromiumWebBrowser1);
         }
 
     }

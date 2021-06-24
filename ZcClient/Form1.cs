@@ -1,13 +1,4 @@
 ﻿using CefSharp;
-using CefSharp.WinForms;
-using Hardware;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ZcClient
@@ -22,7 +13,8 @@ namespace ZcClient
             //CefSharpSettings.WcfEnabled = true;
             //var obj = new CSObj(System.Threading.SynchronizationContext.Current);
 
-            string url = "http://127.0.0.1:9090/page/index.html";
+            //string url = "http://127.0.0.1:9090/page/index.html";
+            string url = "http://172.16.78.28:8813/page/index.html";
             string rootPath = Application.StartupPath.ToString();
             string filePath = rootPath+"\\web\\page\\index.html";
             this.chromiumWebBrowser1.Load(url);
@@ -36,7 +28,7 @@ namespace ZcClient
 
             JavascriptObject javascriptObject = new JavascriptObject();
 
-            chromiumWebBrowser1.JavascriptObjectRepository.Register("googleBrower", test, isAsync: true, options: BindingOptions.DefaultBinder);
+            chromiumWebBrowser1.JavascriptObjectRepository.Register("googleBrower", javascriptObject, isAsync: true, options: BindingOptions.DefaultBinder);
 
             //webview.JavascriptObjectRepository.Register("googleBrower", new CSObj(), false, CefSharp.BindingOptions.DefaultBinder);
             this.Controls.Add(chromiumWebBrowser1);

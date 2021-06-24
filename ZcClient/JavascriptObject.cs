@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace ZcClient
 {
@@ -16,7 +12,7 @@ namespace ZcClient
         {
             HardwareSdk hardware = new HardwareSdk();
 
-            return hardware.readIdCard(); ;
+            return hardware.readIdCard(); 
         }
 
         /// <summary>

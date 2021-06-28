@@ -1,5 +1,7 @@
 ﻿
 
+using System;
+
 namespace ZcClient
 {
     public class JavascriptObject
@@ -10,9 +12,23 @@ namespace ZcClient
         /// <returns></returns>
         public string readIdCard()
         {
-            HardwareSdk hardware = new HardwareSdk();
+            try
+            {
+                return HardwareSdk.readIdCard();
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
 
-            return hardware.readIdCard(); 
+
+        public void print(string param)
+        {
+            FormPrint form = new FormPrint();
+            form.printContent = param;
+            form.ShowDialog();
+
         }
 
         /// <summary>
